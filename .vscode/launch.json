@@ -27,10 +27,10 @@
         },
         {
             "name": "Frontend: watch",
-            "type": "node-terminal",
+            "type": "firefox",
             "request": "launch",
-            "command": "npm run dev",
-            "cwd": "${workspaceFolder}/app/frontend",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/app/frontend",
         }
     ],
     "inputs": [

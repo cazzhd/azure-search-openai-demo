@@ -1,6 +1,4 @@
-// Refactored from https://github.com/Azure-Samples/ms-identity-javascript-react-tutorial/blob/main/1-Authentication/1-sign-in/SPA/src/authConfig.js
-const BACKEND_URI = "https://app-backend-mpjlcm23qanqm.azurewebsites.net";
-
+import { BACKEND_URI } from "../src/Constants";
 import { AuthenticationResult, IPublicClientApplication } from "@azure/msal-browser";
 
 interface AuthSetup {

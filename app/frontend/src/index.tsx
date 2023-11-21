@@ -11,6 +11,8 @@ import "./index.css";
 import Layout from "./pages/layout/Layout";
 import Chat from "./pages/chat/Chat";
 
+console.log(import.meta.env);
+
 var layout;
 if (useLogin) {
     var msalInstance = new PublicClientApplication(msalConfig);
@@ -61,7 +63,7 @@ const router = createHashRouter([
     }
 ]);
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("chatcs") as HTMLElement).render(
     <React.StrictMode>
         <RouterProvider router={router} />
     </React.StrictMode>

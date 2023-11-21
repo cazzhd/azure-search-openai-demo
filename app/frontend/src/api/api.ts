@@ -1,7 +1,6 @@
-const BACKEND_URI = "";
-
 import { ChatAppResponse, ChatAppResponseOrError, ChatAppRequest } from "./models";
 import { useLogin } from "../authConfig";
+import { BACKEND_URI } from "../Constants";
 
 function getHeaders(idToken: string | undefined): Record<string, string> {
     var headers: Record<string, string> = {
