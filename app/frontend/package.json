@@ -7,10 +7,13 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "dev": "vite",
-    "build:local": "tsc && vite build --mode local",
-    "build:dev": "tsc && vite build --mode dev",
-    "build:prod": "tsc && vite build --mode production",
+    "stage": "NODE_ENV=stage vite --mode stage",
+    "dev": "NODE_ENV=development vite --mode development",
+    "prod": "NODE_ENV=production vite --mode production",
+    "build:stage": "tsc && NODE_ENV=stage vite build --mode stage",
+    "build:dev": "tsc && NODE_ENV=development vite build --mode development",
+    "build:prod": "tsc && NODE_ENV=production vite build --mode production",
+    "build": "npm run build:prod",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -34,7 +37,6 @@
     "@types/react-dom": "^18.2.13",
     "@vitejs/plugin-react": "^4.1.0",
     "prettier": "^3.0.3",
-    "typescript": "^5.2.2",
     "vite": "^4.4.11"
   }
 }

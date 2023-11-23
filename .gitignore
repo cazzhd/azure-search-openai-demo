@@ -153,3 +153,6 @@ data/*.md5
 
 # Ignore all .env.* files
 .env.*
+
+# Ignore folder versioning
+versioning/

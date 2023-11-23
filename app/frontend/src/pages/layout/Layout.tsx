@@ -1,12 +1,13 @@
 import { Outlet, NavLink, Link } from "react-router-dom";
 
-import github from "../../assets/github.svg";
-
 import styles from "./Layout.module.css";
 
 import { useLogin } from "../../authConfig";
 
 import { LoginButton } from "../../components/LoginButton";
+
+import ReceiveMessage from "../../components/PostMessage/ReceiveMessage";
+import handleReceivedMessage from "../../components/PostMessage/handleReceivedMessage";
 
 const Layout = () => {
     return (
@@ -28,10 +29,10 @@ const Layout = () => {
                                     Ask a question
                                 </NavLink>
                             </li>
-                            <li className={styles.headerNavLeftMargin}>
+                            {/* <li className={styles.headerNavLeftMargin}>
                                 <a href="https://aka.ms/entgptsearch" target={"_blank"} title="Github repository link">
                                     <img
-                                        src={github}
+                                        src={cognifit}
                                         alt="Github logo"
                                         aria-label="Link to github repository"
                                         width="20px"
@@ -39,7 +40,7 @@ const Layout = () => {
                                         className={styles.githubLogo}
                                     />
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </nav>
                     <h4 className={styles.headerRightText}>Azure OpenAI + AI Search</h4>
@@ -48,6 +49,7 @@ const Layout = () => {
             </header>
 
             <Outlet />
+            <ReceiveMessage onMessageReceived={handleReceivedMessage} />
         </div>
     );
 };
