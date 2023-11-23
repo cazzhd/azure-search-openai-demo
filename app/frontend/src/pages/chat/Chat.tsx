@@ -242,7 +242,7 @@ const Chat = () => {
                         <div className={styles.chatEmptyState}>
                             <img className={styles.logoChat} src={cognifitLogo} aria-label="Chat logo" />
                             <h1 className={styles.chatEmptyStateTitle}>Chat with the Cognifit Assistant</h1>
-                            <h2 className={styles.chatEmptyStateSubtitle}>Ask anything or try an example</h2>
+                            <h2 className={styles.chatEmptyStateSubtitle}>Please choose the category that best suits your inquiry</h2>
                             <ExampleList onExampleClicked={onExampleClicked} />
                         </div>
                     ) : (

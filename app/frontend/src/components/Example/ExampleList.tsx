@@ -9,12 +9,9 @@ export type ExampleModel = {
 };
 
 const EXAMPLES: ExampleModel[] = [
-    {
-        text: "What is Cognifit?",
-        value: "What is Cognifit?"
-    },
-    { text: "Chat SF", value: "Chat SF" },
-    { text: "How can I subscribe?", value: "How can I subscribe?" }
+    { text: "About Cognifit", value: ">>Hello&AboutCognifit<<" },
+    { text: "I have a problem", value: ">>Hello&Problem<<" },
+    { text: "I want to integrate", value: ">>Hello&Integration<<" }
 ];
 
 interface Props {
@@ -29,7 +26,9 @@ export const ExampleList = ({ onExampleClicked }: Props) => {
                     <Example
                         text={x.text}
                         value={x.value}
-                        onClick={x.text === "Chat SF" ? () => sendMessageToParent({ action: "helloWorld", args: { param1: "hola" } }) : onExampleClicked}
+                        onClick={
+                            x.text === "I have a problem" ? () => sendMessageToParent({ action: "helloWorld", args: { param1: "hola" } }) : onExampleClicked
+                        }
                     />
                 </li>
             ))}
