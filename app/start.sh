@@ -41,15 +41,30 @@ if [ $? -ne 0 ]; then
     exit $?
 fi
 
+mode=${1:-dev}
+if [ "$mode" != "dev" ] && [ "$mode" != "prod" ]; then
+    echo "Mode must be dev or prod"
+    exit 1
+fi
+
 echo ""
-echo "Building frontend"
+echo "Building frontend in $mode mode"
 echo ""
 
-npm run build
+npm run build:"$mode"
 if [ $? -ne 0 ]; then
     echo "Failed to build frontend"
     exit $?
 fi
+
+first_folder=$(ls -d ./dist/*/ | head -n 1)
+if [ -z "$first_folder" ]; then
+    echo "No folder found inside ./dist"
+    exit 1
+fi
+
+mkdir -p ../backend/static
+cp -r "$first_folder"* ../backend/static
 
 echo ""
 echo "Starting backend"

@@ -1,11 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import * as pkg from "./package.json";
+import { generateVersion, getShortMode } from "./src/version/version";
 
-// https://vitejs.dev/config/
+// get modeString from process.env.NODE_ENV if is not defined use dev and if is development use dev and if is production use prod
+const mode = getShortMode(process.env.NODE_ENV || "development");
+const appVersion = generateVersion(pkg.version, mode);
+
 export default defineConfig({
+    base: "./",
     plugins: [react()],
     build: {
-        outDir: "../backend/static",
+        outDir: `./dist/${appVersion}`,
         emptyOutDir: true,
         sourcemap: true,
         rollupOptions: {
@@ -30,5 +36,12 @@ export default defineConfig({
             "/ask": "http://localhost:50505",
             "/chat": "http://localhost:50505"
         }
+    },
+    define: {
+        // Define la versión como una variable global en el navegador
+        // 'process.env': {},
+        // 'window.process.env.APP_VERSION': JSON.stringify(appVersion),
+        "import.meta.env.VITE_APP_VERSION": JSON.stringify(appVersion),
+        "import.meta.env.VITE_MODE": JSON.stringify(mode)
     }
 });
